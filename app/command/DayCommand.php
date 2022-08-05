@@ -39,9 +39,9 @@ class DayCommand extends CoreCommand
 
     protected function setEg()
     {
-        $this->addEg("run 'php bin/helper.php --touch'    默认为今天的日期，如果需要指定日期，可以使用 --date=2019-01-01 或者 --time 1546300800");
-        $this->addEg("run 'php bin/helper.php --touch -d 2019-01-01");
-        $this->addEg("run 'run 'php bin/helper.php --run -t 1546300800'");
+        $this->addEg("run 'php ./bin/command.php day --touch'    默认为今天的日期，如果需要指定日期，可以使用 --date 2019-01-01 或者 --time 1546300800");
+        $this->addEg("run 'php ./bin/command.php day --touch -d 2019-01-01");
+        $this->addEg("run 'run 'php ./bin/command.php day --run -t 1546300800'");
     }
 
     protected function handle()
