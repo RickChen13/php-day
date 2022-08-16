@@ -27,7 +27,7 @@ class Day20220808
      *
      * @param integer $time
      * @return int
-     * @tab 日期 获取上个月最后一天
+     * @tag 日期 获取上个月最后一天
      */
     public function getLastDayOfLastMonth(int $time)
     {
@@ -42,7 +42,7 @@ class Day20220808
      *
      * @param int $time
      * @return int
-     * @tab 日期 获取本月第一天
+     * @tag 日期 获取本月第一天
      */
     public function getFristOfThisMonth(int $time)
     {
@@ -57,7 +57,7 @@ class Day20220808
      *
      * @param int $time
      * @return int
-     * @tab 日期 获取下个月第一天
+     * @tag 日期 获取下个月第一天
      */
     function getFristDayOfNetMonth(int $time)
     {
@@ -72,7 +72,7 @@ class Day20220808
      *
      * @param int $time
      * @return int
-     * @tab 日期 获取本周第一天(星期一)
+     * @tag 日期 获取本周第一天(星期一)
      */
     public function getFristDayOfThisWeek(int $time)
     {
@@ -87,7 +87,7 @@ class Day20220808
      *
      * @param int $time
      * @return int
-     * @tab 日期 获取本周最后一天(星期天)
+     * @tag 日期 获取本周最后一天(星期天)
      */
     public function getLastDayOfThisWeek(int $time)
     {
