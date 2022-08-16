@@ -27,7 +27,7 @@ class Day20220805
      *
      * @param string $ip
      * @return void
-     * @tab IP 获取ip属地
+     * @tag IP 获取ip属地
      */
     public function getIpTerritory(string $ip)
     {
