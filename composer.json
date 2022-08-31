@@ -9,5 +9,8 @@
         "files": [
             "stubs/common.func.php"
         ]
+    },
+    "require": {
+        "symfony/yaml": "^5.4"
     }
 }
