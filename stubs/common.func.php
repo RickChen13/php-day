@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use think\facade\Db;
+
 if (!\class_exists('Env')) {
     require __DIR__ . '/Env.php';
 }
@@ -63,18 +65,24 @@ if (!function_exists('env')) {
      */
     function env(string $name = null, $default = null)
     {
-        $file = "";
-        if (defined('BASE_PATH')) {
-            $file = BASE_PATH;
-        } else {
-            $file = dirname(__DIR__, 1);
-        }
-        $fileName = $file . DIRECTORY_SEPARATOR . '.env';
+        $fileName = BASE_PATH . DIRECTORY_SEPARATOR . '.env';
         if (file_exists($fileName)) {
-            $env = new Env($file . DIRECTORY_SEPARATOR . '.env');
+            $env = new Env(BASE_PATH . DIRECTORY_SEPARATOR . '.env');
         } else {
             $env = new Env();
         }
         return $env->get($name, $default);
+    }
+}
+
+if (!function_exists('load_think_orm')) {
+
+    /**
+     * 加载think-orm配置
+     */
+    function load_think_orm()
+    {
+        $dbCoinfig = include BASE_PATH . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "database.php";
+        Db::setConfig($dbCoinfig);
     }
 }
