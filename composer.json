@@ -11,6 +11,7 @@
         ]
     },
     "require": {
-        "symfony/yaml": "^5.4"
+        "symfony/yaml": "^5.4",
+        "topthink/think-orm": "^2.0"
     }
 }

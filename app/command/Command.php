@@ -6,6 +6,8 @@ namespace app\command;
 
 use app\common\helper\CoreCommand;
 
+require_once(BASE_PATH . DIRECTORY_SEPARATOR . "app" . DIRECTORY_SEPARATOR . "common.php");
+
 class Command extends CoreCommand
 {
     protected function setOptions()
