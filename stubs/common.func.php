@@ -69,7 +69,12 @@ if (!function_exists('env')) {
         } else {
             $file = dirname(__DIR__, 1);
         }
-        $env = new Env($file . DIRECTORY_SEPARATOR . '.env');
+        $fileName = $file . DIRECTORY_SEPARATOR . '.env';
+        if (file_exists($fileName)) {
+            $env = new Env($file . DIRECTORY_SEPARATOR . '.env');
+        } else {
+            $env = new Env();
+        }
         return $env->get($name, $default);
     }
 }
