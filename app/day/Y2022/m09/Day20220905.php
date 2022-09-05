@@ -33,6 +33,7 @@ class Day20220905
      * 测试是否能连接数据库
      *
      * @return void
+     * @tag think-orm 配置
      */
     public function dbTest()
     {
