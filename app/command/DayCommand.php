@@ -41,6 +41,8 @@ class DayCommand extends CoreCommand
     {
         $this->addEg("run 'php ./bin/command.php day --touch'    默认为今天的日期，如果需要指定日期，可以使用 --date 2019-01-01 或者 --time 1546300800");
         $this->addEg("run 'php ./bin/command.php day --touch -d 2019-01-01");
+        $this->addEg("run 'php ./bin/command.php day --touch -d 20190101");
+        $this->addEg("run 'php ./bin/command.php day --touch -d 190101");
         $this->addEg("run 'run 'php ./bin/command.php day --run -t 1546300800'");
     }
 
@@ -80,17 +82,39 @@ class DayCommand extends CoreCommand
             case $time !== null && $date === null:
                 $Time = (int)$time;
                 break;
+            case $time !== null && $date !== null:
             case $time === null && $date !== null:
+                if (strlen($date) == 6) {
+                    $newDate = "";
+                    $dataArray = str_split($date);
+                    array_walk($dataArray, function ($v, $k) use (&$newDate) {
+                        if ($k % 2 == 0 && $k > 0) {
+                            $newDate .= "-";
+                        }
+                        $newDate .= $v;
+                    });
+                    $date = $newDate;
+                } else if (strlen($date) == 8) {
+                    $newDate = "";
+                    $dataArray = str_split($date);
+                    if (!in_array("-", $dataArray)) {
+                        array_walk($dataArray, function ($v, $k) use (&$newDate) {
+                            $k -= 2;
+                            if ($k % 2 == 0 && $k > 0) {
+                                $newDate .= "-";
+                            }
+                            $newDate .= $v;
+                        });
+                        $date = $newDate;
+                    }
+                }
                 $strtotime = strtotime((string)$date);
                 if ($strtotime !== false) {
                     $Time = $strtotime;
                 }
                 break;
-
             case $time === null && $date === null:
                 $Time = time();
-                break;
-            case $time !== null && $date !== null:
                 break;
             default:
                 break;
